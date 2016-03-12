@@ -34,11 +34,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-8">
-                        <div class="checkbox icheck">
-                            <label>
-                                <input type="checkbox" name="_remember_me"> Remember Me
-                            </label>
-                        </div>
+
                     </div><!-- /.col -->
                     <div class="col-xs-4">
                         <input type="hidden" name="_target_path" value="/account">
@@ -54,14 +50,13 @@
             </div><!-- /.social-auth-links -->
 
             <a href="#">I forgot my password</a><br>
-            <a href="register.html" class="text-center">Register a new membership</a>
+            <a href="{{ path('register') }}" class="text-center">Register a new membership</a>
 
         </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 {% endblock %}
 {% block javascripts %}
     {% include 'AppBundle::javascript.html.twig' %}
-    <script src="/bundles/app/js/hyper.js"></script>
 {% endblock %}
 </body>
 </html>

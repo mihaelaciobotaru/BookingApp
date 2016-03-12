@@ -8,55 +8,231 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         {% block stylesheets %}
             {% include 'AppBundle::stylesheet.html.twig' %}
-        {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body class="hold-transition login-page">
-        {% block body %}
-            <div class="login-box">
-                <div class="login-logo">
-                    <a href="../../index2.html"><b>Admin</b>LTE</a>
-                </div><!-- /.login-logo -->
-                <div class="login-box-body">
-                    <p class="login-box-msg">Sign in to start your session</p>
-                    <form action="../../index2.html" method="post">
-                        <div class="form-group has-feedback">
-                            <input type="email" class="form-control" placeholder="Email">
-                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                        </div>
-                        <div class="form-group has-feedback">
-                            <input type="password" class="form-control" placeholder="Password">
-                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <div class="checkbox icheck">
-                                    <label>
-                                        <input type="checkbox"> Remember Me
-                                    </label>
-                                </div>
-                            </div><!-- /.col -->
-                            <div class="col-xs-4">
-                                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                            </div><!-- /.col -->
-                        </div>
-                    </form>
-
-                    <div class="social-auth-links text-center">
-                        <p>- OR -</p>
-                        <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
-                        <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
-                    </div><!-- /.social-auth-links -->
-
-                    <a href="#">I forgot my password</a><br>
-                    <a href="register.html" class="text-center">Register a new membership</a>
-
-                </div><!-- /.login-box-body -->
-            </div><!-- /.login-box -->
+            <link rel="stylesheet" type="text/css" media="screen" href="/bundles/app/css/style.css">
+            <link rel="stylesheet" type="text/css" media="screen" href="/bundles/app/theme/dist/css/skins/skin-blue.css">
         {% endblock %}
         {% block javascripts %}
             {% include 'AppBundle::javascript.html.twig' %}
-            <script src="/bundles/app/js/hyper.js"></script>
         {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    </head>
+    <body class="skin-blue layout-top-nav">
+        <div class="wrapper">
+            <header class="main-header">
+                <nav class="navbar navbar-static-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="../../index2.html"><b>Admin</b>LTE</a>
+                            <button data-target="#navbar-collapse" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div id="navbar-collapse" class="collapse navbar-collapse pull-left">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">Link</a></li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                    <ul role="menu" class="dropdown-menu">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <form role="search" class="navbar-form navbar-left">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Search" id="navbar-search-input" class="form-control">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.navbar-collapse -->
+                        <!-- Navbar Right Menu -->
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                <!-- Messages: style can be found in dropdown.less-->
+                                <li class="dropdown messages-menu">
+                                    <!-- Menu toggle button -->
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <i class="fa fa-envelope-o"></i>
+                                        <span class="label label-success">4</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="header">You have 4 messages</li>
+                                        <li>
+                                            <!-- inner menu: contains the messages -->
+                                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;"><ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
+                                                    <li><!-- start message -->
+                                                        <a href="#">
+                                                            <div class="pull-left">
+                                                                <!-- User Image -->
+                                                                <img alt="User Image" class="img-circle" src="../../dist/img/user2-160x160.jpg">
+                                                            </div>
+                                                            <!-- Message title and timestamp -->
+                                                            <h4>
+                                                                Support Team
+                                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                            </h4>
+                                                            <!-- The message -->
+                                                            <p>Why not buy a new awesome theme?</p>
+                                                        </a>
+                                                    </li>
+                                                    <!-- end message -->
+                                                </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                            <!-- /.menu -->
+                                        </li>
+                                        <li class="footer"><a href="#">See All Messages</a></li>
+                                    </ul>
+                                </li>
+                                <!-- /.messages-menu -->
+
+                                <!-- Notifications Menu -->
+                                <li class="dropdown notifications-menu">
+                                    <!-- Menu toggle button -->
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <i class="fa fa-bell-o"></i>
+                                        <span class="label label-warning">10</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="header">You have 10 notifications</li>
+                                        <li>
+                                            <!-- Inner Menu: contains the notifications -->
+                                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;"><ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
+                                                    <li><!-- start notification -->
+                                                        <a href="#">
+                                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                                        </a>
+                                                    </li>
+                                                    <!-- end notification -->
+                                                </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                        </li>
+                                        <li class="footer"><a href="#">View all</a></li>
+                                    </ul>
+                                </li>
+                                <!-- Tasks Menu -->
+                                <li class="dropdown tasks-menu">
+                                    <!-- Menu Toggle Button -->
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <i class="fa fa-flag-o"></i>
+                                        <span class="label label-danger">9</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li class="header">You have 9 tasks</li>
+                                        <li>
+                                            <!-- Inner menu: contains the tasks -->
+                                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 200px;"><ul class="menu" style="overflow: hidden; width: 100%; height: 200px;">
+                                                    <li><!-- Task item -->
+                                                        <a href="#">
+                                                            <!-- Task title and progress text -->
+                                                            <h3>
+                                                                Design some buttons
+                                                                <small class="pull-right">20%</small>
+                                                            </h3>
+                                                            <!-- The progress bar -->
+                                                            <div class="progress xs">
+                                                                <!-- Change the css width attribute to simulate progress -->
+                                                                <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" style="width: 20%" class="progress-bar progress-bar-aqua">
+                                                                    <span class="sr-only">20% Complete</span>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <!-- end task item -->
+                                                </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0) none repeat scroll 0% 0%; width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51) none repeat scroll 0% 0%; opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                                        </li>
+                                        <li class="footer">
+                                            <a href="#">View all tasks</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- User Account Menu -->
+                                <li class="dropdown user user-menu">
+                                    <!-- Menu Toggle Button -->
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                        <!-- The user image in the navbar-->
+                                        <img alt="User Image" class="user-image" src="../../dist/img/user2-160x160.jpg">
+                                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                        <span class="hidden-xs">Alexander Pierce</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!-- The user image in the menu -->
+                                        <li class="user-header">
+                                            <img alt="User Image" class="img-circle" src="../../dist/img/user2-160x160.jpg">
+
+                                            <p>
+                                                Alexander Pierce - Web Developer
+                                                <small>Member since Nov. 2012</small>
+                                            </p>
+                                        </li>
+                                        <!-- Menu Body -->
+                                        <li class="user-body">
+                                            <div class="row">
+                                                <div class="col-xs-4 text-center">
+                                                    <a href="#">Followers</a>
+                                                </div>
+                                                <div class="col-xs-4 text-center">
+                                                    <a href="#">Sales</a>
+                                                </div>
+                                                <div class="col-xs-4 text-center">
+                                                    <a href="#">Friends</a>
+                                                </div>
+                                            </div>
+                                            <!-- /.row -->
+                                        </li>
+                                        <!-- Menu Footer-->
+                                        <li class="user-footer">
+                                            <div class="pull-left">
+                                                <a class="btn btn-default btn-flat" href="#">Profile</a>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a class="btn btn-default btn-flat" href="#">Sign out</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.navbar-custom-menu -->
+                    </div>
+                    <!-- /.container-fluid -->
+                </nav>
+            </header>
+            <!-- Full Width Column -->
+            <div class="content-wrapper" style="min-height: 600px;">
+                <div class="container">
+                    <!-- Content Header (Page header) -->
+                    <section class="content-header">
+                        <h1>
+                            Top Navigation
+                            <small>Example 2.0</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                            <li><a href="#">Layout</a></li>
+                            <li class="active">Top Navigation</li>
+                        </ol>
+                    </section>
+
+                    <!-- Main content -->
+                    <section class="content">
+                        {% block content %}
+                        {% endblock %}
+                    </section>
+                </div>
+                <!-- /.container -->
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            {% block javascript %}
+            {# extra javascript#}
+            {% endblock %}
+        </script>
     </body>
 </html>

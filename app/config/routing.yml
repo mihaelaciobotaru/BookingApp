@@ -8,8 +8,12 @@ test:
 
 homepage:
     path:     /
-    defaults: { _controller: AppBundle:Security:login }
+    defaults: { _controller: AppBundle:Interest:index }
 
 register:
     path: /register
     defaults: { _controller: AppBundle:Registration:register }
+
+edit_interest:
+    path: /interest/edit/{id}
+    defaults: { _controller: AppBundle:Interest:edit }

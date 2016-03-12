@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
@@ -16,7 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface, AdvancedUserInterface ,\Serializable
 {
     const TYPE_ADMIN = 1;
-    const TYPE_USER = 2;
+    const TYPE_LANDLORD = 2;
+    const TYPE_TENANT = 3;
     /**
      * @var int
      *
@@ -96,16 +98,31 @@ class User implements UserInterface, AdvancedUserInterface ,\Serializable
     private $isActive;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="type", type="integer")
+     */
+    private $type;
+
+    /**
      * An API token that can be used for this user
      *
      * @ORM\Column(type="string", nullable=true)
      */
     private $token;
 
+    /**
+     * @var Interest
+     *
+     * @ORM\OneToMany(targetEntity="Interest", mappedBy="landlord")
+     */
+    private $interests;
+
     public function __construct()
     {
         $this->created = new \DateTime("now");
         $this->isActive = true;
+        $this->interests = new ArrayCollection();
     }
 
     /**
@@ -338,14 +355,38 @@ class User implements UserInterface, AdvancedUserInterface ,\Serializable
         $this->isActive = $isActive;
     }
 
-    public function getRoles()
+    /**
+     * @return int
+     */
+    public function getType()
     {
-        return ["ROLE_USER"];
+        return $this->type;
     }
 
-    public function setRoles($roles)
+    /**
+     * @param $type
+     */
+    public function setType($type)
     {
-        $this->roles = $roles;
+        $this->type = $type;
+    }
+
+    public function getRoles()
+    {
+        $roles = array("ROLE_USER");
+        switch ($this->type){
+            case self::TYPE_ADMIN:
+                $roles[] = "ROLE_ADMIN";
+                break;
+            case self::TYPE_LANDLORD:
+                $roles[] = "ROLE_LANDLORD";
+                break;
+            case self::TYPE_TENANT:
+                $roles[] = "ROLE_TENANT";
+                break;
+        }
+
+        return $roles;
     }
 
     public function eraseCredentials()
@@ -380,6 +421,14 @@ class User implements UserInterface, AdvancedUserInterface ,\Serializable
     public function setToken($token)
     {
         $this->token = $token;
+    }
+
+    /**
+     * @return Interest|ArrayCollection
+     */
+    public function getInterests()
+    {
+        return $this->interests;
     }
 
     /** @see \Serializable::serialize() */

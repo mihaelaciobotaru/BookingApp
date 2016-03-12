@@ -3,22 +3,38 @@
 security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        AppBundle\Entity\User: bcrypt
+
     providers:
-        in_memory:
-            memory: ~
+        main_provider:
+            id: app.user_provider
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|images|js)/ 
             security: false
+        secured_area:
+            pattern: ^/
+            anonymous: true
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+            guard:
+                authenticators:
+                    - app.form_login_authenticator
+                    - app.token_authenticator
+                entry_point: app.form_login_authenticator
+            #remember_me:
+             #   key: abcd123KEY
 
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+            provider: main_provider
 
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            switch_user: ~
+
+            logout:
+                # The route name the user can go to in order to logout
+                path: security_logout
+                # The name of the route to redirect to after logging out
+                target: homepage
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

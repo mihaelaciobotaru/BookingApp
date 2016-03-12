@@ -7,3 +7,15 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+    app.form_login_authenticator:
+        class: AppBundle\Security\FormLoginAuthenticator
+        arguments: ['@security.password_encoder', '@router']
+
+    app.token_authenticator:
+        class: AppBundle\Security\TokenAuthenticator
+        arguments: []
+
+    app.user_provider:
+        class: AppBundle\Security\UserProvider
+        arguments: ['@doctrine.orm.entity_manager']

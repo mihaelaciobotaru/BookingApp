@@ -132,5 +132,20 @@ class File
     {
         return $this->created;
     }
+
+    static function getTypeNames(){
+        $ret = array(
+            self::TYPE_PROFILE_PIC => "Profile Pictures",
+            self::TYPE_INTEREST_PHOTO => "Interest Photos",
+        );
+        return $ret;
+    }
+
+    public function getFolderName(){
+        $x = $this->getTypeNames(false);
+        $name = explode(" ", strtolower($x[$this->type]));
+
+        return implode("_", array_reverse($name));
+    }
 }
 

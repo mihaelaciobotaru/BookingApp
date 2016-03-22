@@ -76,7 +76,7 @@ class Interest
     /**
      * @var string
      *
-     * @ORM\Column(name="images", type="text")
+     * @ORM\Column(name="images", type="text", nullable=true)
      */
     private $images;
 

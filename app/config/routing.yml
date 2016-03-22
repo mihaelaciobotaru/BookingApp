@@ -14,14 +14,17 @@ register:
     path: /register
     defaults: { _controller: AppBundle:Registration:register }
 
-edit_interest:
+interest_edit:
     path: /interest/edit/{id}
     defaults: { _controller: AppBundle:Interest:edit }
 
-upload:
-    path: /upload/{what}
-    defaults: { _controller: AppBundle:Default:upload }
+interest_upload:
+    path: /interest/upload/{id}
+    defaults: { _controller: AppBundle:Interest:upload }
 
-upload_reverse:
-    path:    /upload-reverse/{what}
-    defaults: { _controller: App:Default:uploadReverse }
+interest_do_upload:
+    path: /interest/do-upload
+    defaults: { _controller: AppBundle:Interest:doUpload }
+
+
+

@@ -36,8 +36,6 @@ class InterestType extends AbstractType
                                                     'label_attr' => array('class' => 'col-sm-2 control-label'),))
             ->add('description', TextAreaType::Class, array('attr' => array('class' => 'form-control', 'label' => 'Description'),
                                                                             'label_attr' => array('class' => 'col-sm-2 control-label'),))
-            ->add('images', HiddenType::Class, array('attr' => array('label' => 'Images'),
-                                                     'label_attr' => array('class' => 'col-sm-2 control-label'),))
         ;
     }
     

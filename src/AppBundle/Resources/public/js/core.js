@@ -38,7 +38,7 @@ function initTooltip(){
 var dropzoneInit = "/bundles/app/components/dropzone";
 
 function initDropzone(){
-    if ($('div[data-dropzone]').length==0){ return false; } //No need to load the component if there aren't any data-dropzone divs
+    if ($('form[data-dropzone]').length==0){ return false; } //No need to load the component if there aren't any data-dropzone forms
     if (dropzoneInit!=""){
         $('<link/>', {rel: 'stylesheet', href: dropzoneInit+'/basic.css'}).appendTo('head');
         $('<link/>', {rel: 'stylesheet', href: dropzoneInit+'/dropzone.css'}).appendTo('head');
@@ -55,15 +55,15 @@ function initDropzone(){
 }
 function applyDropzone(){
     dropzoneInit = "";
-    $('div[data-dropzone]').each(function (){
+    $('form[data-dropzone]').each(function (){
         var attr = $(this).attr("data-dropzone");
         Dropzone.options.myAwesomeDropzone = {
-            url: "/upload/interest_" + $(this).attr("data-dropzone") ,
-            paramName: "uploadfile", // The name that will be used to transfer the file
+            //url: "/interest/do-upload/", //+ $(this).attr("data-dropzone") ,
+            paramName: "file", // The name that will be used to transfer the file
             maxFilesize: 2, // MB
             autoProcessQueue: true,
             uploadMultiple: false,
-            init: function() {
+            /*init: function() {
                 var thisDropzone = this;
                 $.get("/upload-reverse/interest_" + attr, function(data) {
                     $.each(data, function(key,value){
@@ -81,7 +81,7 @@ function applyDropzone(){
                     });
 
                 });
-            },
+            },*/
             accept: function(file, done) {
                 done();
             },

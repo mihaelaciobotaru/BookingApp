@@ -2,9 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\File;
 
 class DefaultController extends Controller
@@ -69,10 +69,11 @@ class DefaultController extends Controller
             }
             $id = $entity->getId();
         }
-
-        $uploadRoot = '/bundles/app/uploads/';
+        $uploadRoot = __DIR__.'/../../../../web/bundles/app/uploads/';
         $uploadDir  = $uploadRoot.$uploadDir;
+        var_dump($uploadDir);
         if (!is_dir($uploadDir)) {
+            var_dump(is_dir($uploadDir));
             mkdir($uploadDir); chmod($uploadDir, 0777);
         } //We make sure the directory exists
 
@@ -101,19 +102,19 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $what = explode("_", $what);
-        $event_id = $what[1];
+        $interest_id = $what[1];
 
-        $event = $em->getRepository("JaromaniaMainBundle:Event")->find($event_id);
-        if ($event->getAttachments() != null) {
-            $attachments = $event->getAttachments();
-            if ($attachments[0] == ",") {
-                $attachments = substr($attachments,1);
+        $interest = $em->getRepository("AppBundle:Interest")->find($interest_id);
+        if ($interest != null && $interest->getImages() != null) {
+            $images = $interest->getImages();
+            if ($images[0] == ",") {
+                $images = substr($images,1);
             }
-            $attachments = explode(",", $attachments);
+            $images = explode(",", $images);
             $uploadRoot = $this->get('kernel')->getRootDir() . '/../web';
             $result = array();
-            foreach ($attachments as $att) {
-                $file = $em->getRepository("JaromaniaMainBundle:File")->find($att);
+            foreach ($images as $img) {
+                $file = $em->getRepository("AppBundle:File")->find($img);
                 $obj["name"] = $file->getPath();
                 $obj["size"] = filesize($uploadRoot.$file->getPath());
                 $obj["fullName"] = $file->getName();
@@ -125,19 +126,6 @@ class DefaultController extends Controller
                         break;
                     case "png":
                         $ext = "image/png";
-                        break;
-                    case "pdf":
-                        $ext = "application/pdf";
-                        break;
-                    case "doc":
-                    case "docx":
-                        $ext = "application/msword";
-                        break;
-                    case "zip":
-                        $ext = "application/zip";
-                        break;
-                    case "rar":
-                        $ext = "application/x-rar-compressed";
                         break;
                 }
                 $obj["ext"] = $ext;

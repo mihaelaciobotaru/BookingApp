@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "129bc14b0cc42aee08aabd7934261170",
-    "content-hash": "0a7517eab73ab9cea2cfe6724cdcdaf6",
+    "hash": "d03a4bcdd2c8117651d6fd770c173b2f",
+    "content-hash": "0e37f142feee0b43c1eae846c4c3c494",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1639,16 +1639,16 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v3.0.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "18c3d4f356931a5b6a4afb0cc679a2c58931c795"
+                "reference": "09ae53562ce8b7842206efa217ec81442975f055"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/18c3d4f356931a5b6a4afb0cc679a2c58931c795",
-                "reference": "18c3d4f356931a5b6a4afb0cc679a2c58931c795",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/09ae53562ce8b7842206efa217ec81442975f055",
+                "reference": "09ae53562ce8b7842206efa217ec81442975f055",
                 "shasum": ""
             },
             "require": {
@@ -1718,7 +1718,7 @@
                 "doctrine/orm": "~2.4,>=2.4.5",
                 "egulias/email-validator": "~1.2",
                 "monolog/monolog": "~1.11",
-                "ocramius/proxy-manager": "~0.4|~1.0",
+                "ocramius/proxy-manager": "~0.4|~1.0|~2.0",
                 "phpdocumentor/reflection": "^1.0.7",
                 "symfony/polyfill-apcu": "~1.1",
                 "symfony/security-acl": "~2.8|~3.0"
@@ -1764,7 +1764,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2016-02-03 12:42:23"
+            "time": "2016-02-28 21:33:29"
         },
         {
             "name": "twig/twig",
@@ -1891,7 +1891,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/855dc0e829fad123966347612b4183e307338c11",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/9562f8291b98bcd4abd4959ab74f35191d7b34b5",
                 "reference": "855dc0e829fad123966347612b4183e307338c11",
                 "shasum": ""
             },
